@@ -1,0 +1,5 @@
+{
+  "name": "Timeline Bookmark Tool (Mobile App)",
+  "description": "A React Native application that provides a persistent floating button to bookmark moments and take notes from any screen, capturing the context of the currently active application.",
+  "requestFramePermissions": []
+}
