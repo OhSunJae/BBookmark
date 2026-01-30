@@ -1,0 +1,35 @@
+
+cat <<EOF > App.js
+import React, { useState } from 'react';
+import { View, Text, Button, FlatList, NativeModules } from 'react-native';
+
+const { DuplicateFileManager } = NativeModules;
+
+const App = () => {
+  const [duplicates, setDuplicates] = useState([]);
+
+  const scanFiles = async () => {
+    // 실제 구현 시에는 특정 폴더의 파일 리스트를 가져오는 로직이 추가되어야 합니다.
+    console.log("스캔 시작...");
+  };
+
+  return (
+    <View style={{ padding: 50 }}>
+      <Text style={{ fontSize: 20, marginBottom: 20 }}>중복 파일 제거기</Text>
+      <Button title="중복 스캔 시작" onPress={scanFiles} />
+      <FlatList
+        data={duplicates}
+        keyExtractor={(item) => item.hash}
+        renderItem={({ item }) => (
+          <View style={{ marginTop: 10 }}>
+            <Text>중복 파일 그룹: {item.hash.substring(0, 10)}...</Text>
+            {item.paths.map(path => <Text key={path}>- {path}</Text>)}
+          </View>
+        )}
+      />
+    </View>
+  );
+};
+
+export default App;
+EOF
